@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         StudentManager manager = new StudentManager();
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int choice;
 
         do {
@@ -18,24 +18,24 @@ public class Main {
             System.out.println("4. Display all students");
             System.out.println("5. Exit");
             System.out.print("Your choice: ");
-            choice = Integer.parseInt(sc.nextLine());
+            choice = Integer.parseInt(scanner.nextLine());
 
             try {
                 switch (choice) {
                     case 1:
                         System.out.print("Enter ID: ");
-                        int id = Integer.parseInt(sc.nextLine());
+                        int id = Integer.parseInt(scanner.nextLine());
                         System.out.print("Enter full name: ");
-                        String name = sc.nextLine();
+                        String name = scanner.nextLine();
                         System.out.print("Enter GPA: ");
-                        double gpa = Double.parseDouble(sc.nextLine());
+                        double gpa = Double.parseDouble(scanner.nextLine());
                         Student s = new Student(id, name, gpa);
                         manager.addStudent(s);
                         System.out.println("Student added successfully.");
                         break;
                     case 2:
                         System.out.print("Enter ID to delete: ");
-                        int delId = Integer.parseInt(sc.nextLine());
+                        int delId = Integer.parseInt(scanner.nextLine());
                         if (manager.deleteStudent(delId)) {
                             System.out.println("Student deleted successfully.");
                         } else {
@@ -44,7 +44,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.print("Enter name keyword: ");
-                        String keyword = sc.nextLine();
+                        String keyword = scanner.nextLine();
                         List<Student> found = manager.searchByName(keyword);
                         if (found.isEmpty()) {
                             System.out.println("No student found.");
@@ -68,6 +68,7 @@ public class Main {
                 System.out.println("Error: " + e.getMessage());
             }
         } while (choice != 5);
+        scanner.close();
     }
 
 }
