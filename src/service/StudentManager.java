@@ -12,17 +12,17 @@ public class StudentManager {
 
     public void addStudent(Student s) throws Exception {
         if (students.size() >= 100) {
-            throw new Exception("Student list is full.");
+            throw new IllegalArgumentException("Student list is full.");
         }
 
         for (Student st : students) {
             if (st.getStudentId() == s.getStudentId()) {
-                throw new Exception("Duplicate student ID.");
+                throw new IllegalArgumentException("Duplicate student ID.");
             }
         }
 
         if (!Validator.isValid(s)) {
-            throw new Exception("Invalid student information.");
+            throw new IllegalArgumentException("Invalid student information.");
         }
 
         students.add(s);
